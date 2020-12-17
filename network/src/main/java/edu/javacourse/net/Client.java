@@ -2,30 +2,44 @@ package edu.javacourse.net;
 
 import java.io.*;
 import java.net.Socket;
+import java.time.LocalDateTime;
 
 public class Client {
     public static void main(String[] args) throws IOException {
-        sendRequest();
+      for (int i = 0; i<100; i++) {
+          SimpleClient simpleClient = new SimpleClient();
+          simpleClient.start();
+      }
     }
+}
 
-    private static void sendRequest() throws IOException {
-        Socket socket = new Socket("127.0.0.1", 25225);
+class SimpleClient extends Thread {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
+    @Override
+    public void run() {
+        try {
+            System.out.println("Started: " + LocalDateTime.now());
+            Socket socket = new Socket("127.0.0.1", 25225);
 
-        String s = "Aleksandr ";
+            BufferedReader br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
 
-        bw.write(s);
-        bw.newLine();
-        bw.flush();
-        System.out.println("Client send request!");
-        System.out.println();
+            String s = "Aleksandr ";
 
-        String answer = br.readLine();
-        System.out.println("Client got string: " + answer);
+            bw.write(s);
+            bw.newLine();
+            bw.flush();
+//            System.out.println("Client send request!");
+            System.out.println();
 
-        br.close();
-        bw.close();
+            String answer = br.readLine();
+            System.out.println("Client got string: " + answer);
+
+            br.close();
+            bw.close();
+            System.out.println("Finished: " + LocalDateTime.now());
+        } catch (IOException ex) {
+            ex.printStackTrace(System.out);
+        }
     }
 }
