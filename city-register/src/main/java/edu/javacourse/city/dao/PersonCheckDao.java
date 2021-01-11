@@ -1,6 +1,5 @@
 package edu.javacourse.city.dao;
 
-import com.sun.tools.javac.code.Attribute;
 import edu.javacourse.city.domain.PersonRequest;
 import edu.javacourse.city.domain.PersonResponse;
 import edu.javacourse.city.exception.PersonCheckException;
@@ -22,12 +21,18 @@ public class PersonCheckDao {
                     "AND a.street_code = ? " +
                     "AND UPPER(a.building) = UPPER(?) ";
 
+    private ConnectionBuilder connectionBuilder;
+
     public PersonCheckDao() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setConnectionBuilder(ConnectionBuilder connectionBuilder) {
+        this.connectionBuilder = connectionBuilder;
     }
 
     public PersonResponse checkPerson(PersonRequest personRequest) throws PersonCheckException {
@@ -77,7 +82,6 @@ public class PersonCheckDao {
     }
 
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection("jdbc:postgresql://localhost/city_register",
-                "postgres", "4527835");
+        return connectionBuilder.getConnection();
     }
 }
