@@ -1,5 +1,6 @@
 package edu.javacourse.city.dao;
 
+import com.sun.tools.javac.code.Attribute;
 import edu.javacourse.city.domain.PersonRequest;
 import edu.javacourse.city.domain.PersonResponse;
 import edu.javacourse.city.exception.PersonCheckException;
@@ -20,6 +21,14 @@ public class PersonCheckDao {
                     "AND p.date_of_birth = ? " +
                     "AND a.street_code = ? " +
                     "AND UPPER(a.building) = UPPER(?) ";
+
+    public PersonCheckDao() {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public PersonResponse checkPerson(PersonRequest personRequest) throws PersonCheckException {
         PersonResponse personResponse = new PersonResponse();
