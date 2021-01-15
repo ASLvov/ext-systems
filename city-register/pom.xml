@@ -28,6 +28,7 @@
                 <version>3.3.1</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>C:\Program Files\Java\apache-tomcat-9.0.41\webapps</outputDirectory>
                 </configuration>
             </plugin>
         </plugins>
