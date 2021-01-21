@@ -92,4 +92,14 @@ public class Person {
     public void setPassports(List<Passport> passports) {
         this.passports = passports;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                '}';
+    }
 }

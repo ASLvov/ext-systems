@@ -60,3 +60,6 @@ VALUES (1, '4000', '123456', '2018-04-10', 'Department Passport');
 
 INSERT INTO ro_birth_certificate (number_certificate, date_issue, person_id, father_id, mother_id)
 VALUES ('123Birth', '2018-11-01', '3', '2', '1');
+
+INSERT INTO ro_marriage_certificate(number_certificate, date_issue, husband_id, wife_id, active, end_date)
+VALUES ('MAR12345', '2017-09-06', 2, 1, true, null);
