@@ -10,7 +10,6 @@
 
     <properties>
         <slf4j.version>1.7.30</slf4j.version>
-<!--        <log4j.version>2.14.0</log4j.version>-->
         <spring.version>5.3.3</spring.version>
 <!--        <jersey.version>2.33</jersey.version>-->
 <!--        <jaxb.version>2.3.1</jaxb.version>-->
@@ -34,6 +33,12 @@
                     <artifactId>commons-logging</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>${spring.version}</version>
         </dependency>
 
         <dependency>
