@@ -18,13 +18,19 @@ public class MarriageDao {
 
     private EntityManager entityManager;
 
+    private String test;
+
+    public void setTest(String test) {
+        this.test = test;
+    }
+
     public MarriageDao() {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistence");
         entityManager = factory.createEntityManager();
     }
 
     public MarriageCertificate findMarriageCertificate(MarriageRequest request) {
-        LOGGER.info("findMarriageCertificate called");
+        LOGGER.info("findMarriageCertificate called: {}", test);
         Query query = entityManager.createNamedQuery("MarriageCertificate.findCertificates");
         query.setParameter("certificateId", 1L);
         List<MarriageCertificate> resultList = query.getResultList();
