@@ -11,7 +11,10 @@ import java.time.LocalDate;
         query = "SELECT ms FROM MarriageCertificate ms " +
                 "LEFT JOIN FETCH ms.husband " +
                 "LEFT JOIN FETCH ms.wife " +
-                "WHERE ms.marriageCertificateId = :certificateId")
+                "WHERE ms.marriageCertificateId = :certificateId"),
+        @NamedQuery(name = "MarriageCertificate.findByNum",
+        query = "SELECT mc FROM MarriageCertificate mc " +
+                "WHERE mc.number = :number")
 })
 
 public class MarriageCertificate {

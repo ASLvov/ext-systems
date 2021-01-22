@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service(value = "controller")
+@Service("controller")
 public class MarriageController {
     private static final Logger LOGGER = LoggerFactory.getLogger(MarriageController.class);
 

@@ -11,6 +11,7 @@
     <properties>
         <slf4j.version>1.7.30</slf4j.version>
         <spring.version>5.3.3</spring.version>
+        <spring-data.version>2.4.3</spring-data.version>
 <!--        <jersey.version>2.33</jersey.version>-->
 <!--        <jaxb.version>2.3.1</jaxb.version>-->
     </properties>
@@ -39,6 +40,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring-data.version}</version>
         </dependency>
 
         <dependency>

@@ -7,37 +7,24 @@ import edu.javacourse.register.view.MarriageRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import java.util.List;
 
-@Component
-public class MarriageDao {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MarriageDao.class);
+@Repository
+public interface MarriageDao extends JpaRepository<MarriageCertificate, Long> {
+    List<MarriageCertificate> findByNum(@Param("number") String number);
+    List<MarriageCertificate> findByNumber(String number);
 
-    private EntityManager entityManager;
+    @Query("SELECT mc FROM MarriageCertificate mc WHERE mc.number = :number")
+    List<MarriageCertificate> findSomething(@Param("number") String number);
 
-    @Value("${test.value}")
-    private String test;
 
-    public void setTest(String test) {
-        this.test = test;
-    }
-
-    public MarriageDao() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("persistence");
-        entityManager = factory.createEntityManager();
-    }
-
-    public MarriageCertificate findMarriageCertificate(MarriageRequest request) {
-        LOGGER.info("findMarriageCertificate called: {}", test);
-        Query query = entityManager.createNamedQuery("MarriageCertificate.findCertificates");
-        query.setParameter("certificateId", 1L);
-        List<MarriageCertificate> resultList = query.getResultList();
-        return resultList.get(0);
-    }
 }
