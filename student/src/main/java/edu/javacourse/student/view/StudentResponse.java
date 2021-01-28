@@ -5,12 +5,15 @@ import edu.javacourse.student.domain.Student;
 import edu.javacourse.student.domain.StudentForm;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 
 public class StudentResponse {
 
     private String documentNumber;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate documentDate;
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate expiredDate;
     private String universityName;
     private String facultyName;

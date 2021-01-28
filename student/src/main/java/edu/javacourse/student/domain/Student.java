@@ -2,6 +2,7 @@ package edu.javacourse.student.domain;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Table(name = "sr_student")
@@ -19,13 +20,13 @@ public class Student {
     @Column(name = "middle_name")
     private String middleName;
     @Column(name = "date_of_birth")
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     @Column(name = "passport_seria")
     private String passportSeria;
     @Column(name = "passport_number")
     private String passportNumber;
     @Column(name = "passport_date")
-    private String passportDate;
+    private LocalDate passportDate;
     @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY, mappedBy = "student")
     private List<StudentDocument> documents;
 
@@ -61,11 +62,11 @@ public class Student {
         this.middleName = middleName;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -85,11 +86,11 @@ public class Student {
         this.passportNumber = passportNumber;
     }
 
-    public String getPassportDate() {
+    public LocalDate getPassportDate() {
         return passportDate;
     }
 
-    public void setPassportDate(String passportDate) {
+    public void setPassportDate(LocalDate passportDate) {
         this.passportDate = passportDate;
     }
 
