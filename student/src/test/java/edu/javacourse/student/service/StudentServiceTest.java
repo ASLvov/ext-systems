@@ -1,5 +1,6 @@
 package edu.javacourse.student.service;
 
+import edu.javacourse.student.domain.Student;
 import edu.javacourse.student.rest.StudentController;
 import edu.javacourse.student.view.StudentRequest;
 import edu.javacourse.student.view.StudentResponse;

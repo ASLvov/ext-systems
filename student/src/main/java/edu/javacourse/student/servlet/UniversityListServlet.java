@@ -22,7 +22,8 @@ public class UniversityListServlet extends HttpServlet {
         WebApplicationContext webCtx = WebApplicationContextUtils.getWebApplicationContext(ctx);
         UniversityService service = webCtx.getBean(UniversityService.class);
         List<University> universities = service.findUniversities();
-        universities.forEach(u -> System.out.println(u.getUniversityId() + ":" + u.getUniversityName()));
+        universities.forEach(u -> System.out.println(u.getUniversityId() + " : "
+                + u.getUniversityName() + " : " + u.getFaculties().size()));
 
         getServletContext().getRequestDispatcher("/universityList.jsp").forward(req, resp);
     }
