@@ -19,13 +19,13 @@ public class UniversityServiceTest {
     @Autowired
     private UniversityService service;
 
-    @Test
-    public void findUniversities() {
-        List<University> universities = service.findUniversities();
-        System.out.println("OK!");
-        universities.forEach(u -> System.out.println(u.getUniversityId() + " : "
-                + u.getUniversityName() + " : " + u.getFaculties().size()));
-    }
+//    @Test
+//    public void findUniversities() {
+//        List<University> universities = service.findUniversities();
+//        System.out.println("OK!");
+//        universities.forEach(u -> System.out.println(u.getUniversityId() + " : "
+//                + u.getUniversityName() + " : " + u.getFaculties().size()));
+//    }
 
     @Test
     public void findFullUniversities() {
@@ -35,12 +35,12 @@ public class UniversityServiceTest {
                 + u.getUniversityName() + " : " + u.getFaculties().size()));
     }
 
-    @Test
-    public void findFaculties() {
-        List<Faculty> faculties = service.findFaculties();
-        System.out.println("OK!");
-        faculties.forEach(f -> System.out.println(f.getUniversity().getUniversityName()));
-    }
+//    @Test
+//    public void findFaculties() {
+//        List<Faculty> faculties = service.findFaculties();
+//        System.out.println("OK!");
+//        faculties.forEach(f -> System.out.println(f.getUniversity().getUniversityName()));
+//    }
 
     @Test
     public void getFaculty() {
