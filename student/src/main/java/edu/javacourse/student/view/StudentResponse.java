@@ -1,5 +1,7 @@
 package edu.javacourse.student.view;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import edu.javacourse.student.domain.Faculty;
 import edu.javacourse.student.domain.Student;
 import edu.javacourse.student.domain.StudentForm;
@@ -11,9 +13,11 @@ import java.time.LocalDate;
 public class StudentResponse {
 
     private String documentNumber;
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @JsonSerialize(converter = LocalDateStringConverter.class)
+    @JsonDeserialize(converter = StringLocalDateConverter.class)
     private LocalDate documentDate;
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
+    @JsonSerialize(converter = LocalDateStringConverter.class)
+    @JsonDeserialize(converter = StringLocalDateConverter.class)
     private LocalDate expiredDate;
     private String universityName;
     private String facultyName;
